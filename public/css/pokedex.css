@@ -1,0 +1,62 @@
+#ContainerCards{
+	flex-wrap: wrap;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.PokemonCard{
+	background-color: #DCDCDC;
+	width: 19%;
+	margin-top: 2%;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+#Search{
+	flex-wrap: wrap;
+	margin-left: 20%;
+	margin-right: 10%;
+	height: 10%;
+	display: flex;
+	justify-content: flex-start;
+}
+
+#Search button{
+	margin-left: 2%;
+	margin-right: 10%;
+	width: 30px;
+}
+
+#Search img{
+	width: 100%;
+}
+
+#Search h4{
+	width: 10%;
+}
+
+input[type=checkbox] {
+  align-self: center;
+}
+
+
+
+img{
+	display: flex;
+	width: 100%;
+}
+
+h1{
+	color: #B13A3A;
+}
+
+input[type=search] { 	            
+	line-height: 1;  
+	width: 80%;     
+}
+
+button{
+	background-color: transparent; 
+	border: none;
+}
