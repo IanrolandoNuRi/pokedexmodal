@@ -1,3 +1,4 @@
+//##Revisar codigo hay funciones que pulir, hay que corregir el pokemon no encontrado y despues pasar al css para editar las cartas de los pokemones mostrados
 function PokemonSearch() {
 
 	const input =  document.querySelector('#search');
@@ -27,26 +28,24 @@ function PokemonSearchBut() {
 
 
 function LoadPokemonCards (){
-    ContainerCards.innerHTML = '<p id="pokemonNotFound" display:none>Pokemon no encontrado</p></br>';
+	var pokeElements="";
 
     for (let pokemon of kantoArray) {
         let nombre = pokemon['pokemon_species']['name'].toLowerCase();
-        ContainerCards.innerHTML += `
-				<div id="PokemonCard_${pokemon['entry_number']}" class="PokemonCard">
-					<a href="/pokemon/${pokemon['entry_number']}/${pokemon['pokemon_species']['name']}">
-					${imageName(pokemon['entry_number'])}
-					<a>${pokemon['pokemon_species']['name']}</a>
-					</a>
-				</div>
-			`
+        pokeElements += `
+        		<div id="PokemonCard_${pokemon['entry_number']}" class="PokemonCard" onclick="ShowPokeModal('${pokemon['entry_number']}','${pokemon['pokemon_species']['name']}')">				
+						${imageName(pokemon['entry_number'])}
+						<a>${pokemon['pokemon_species']['name']}</a>
+				</div>`;
     }
+    pokeElements += `<p id="pokemonNotFound" display:none>Pokemon no encontrado</p>`;
+    ContainerCards.innerHTML = pokeElements;
     var pokemonNotFound = document.getElementById( "pokemonNotFound" );
 	pokemonNotFound.style.display = "none";
 }
 
 
 function Filter (){
-
     const text = search.value.toLowerCase();
     var pokemonFound = false;
 
@@ -78,6 +77,8 @@ function PokemonNotFound(pokemonFound){
 
 
 function ShowPokemonCards (){
+	var elementPokemonFound = document.getElementById("pokemonNotFound");
+	elementPokemonFound.style.display = "none";
 
 	for (let pokemon of kantoArray) {
 		
@@ -104,13 +105,30 @@ function imageName(ima){
 }
 
 
-function showModalPokemon(){
-	var descriptionPokemon = $descriptionPokemon;
-	var idpokemon = $idPokemon;
-	var pokemonName = $pokemonName;
-	var pokemonAbilities =$pokemonAbilities;
-	var imgpokemon = imageName(idpokemon);
-	PokemonImage.innerHTML = imgpokemon;
-	PokemonDescription.innerHTML = descriptionPokemon;
-	PokemonAbilities.innerHTML =  pokemonAbilities; 
+function ShowPokeModal(idPokemon, pokemonName){
+	document.getElementById("PokeImage").innerHTML = imageName(idPokemon);
+	document.getElementById("PokeName").innerHTML = pokemonName.toUpperCase();
+	fetch('/pokedex/' + idPokemon).then(function(response) {
+  		return response.json();
+	}).then(function(data) {
+		document.getElementById("PokeDescription").innerHTML = data.descriptionPokemon;
+		document.getElementById("PokeAbilities").innerHTML = PokemonAbilities(data.pokemonAbilities);
+  		$("#pokeModal").modal('show');
+	});
+	
+}
+
+function PokemonAbilities(abilities){
+	var contentAbilites = "</br>";
+	for(let abilitie of abilities){
+		if(abilitie != ""){
+			contentAbilites += `
+				<p>
+					Habliidad:</br>
+					${abilitie}
+				</p>
+			`;
+		}
+	}
+	return contentAbilites;
 }

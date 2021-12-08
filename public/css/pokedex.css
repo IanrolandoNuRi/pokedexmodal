@@ -36,11 +36,43 @@
 	width: 10%;
 }
 
-input[type=checkbox] {
-  align-self: center;
+.modal .modal-dialog{
+	max-width: 90%;
+	flex-wrap: wrap;
+	display: flex;
 }
 
 
+#pokeContent{
+		display: flex;
+		justify-content: center;
+}
+
+#PokeImage{
+	display: block;
+	margin: auto;
+	width: 30%;
+}
+
+
+#PokeSummary{
+	width: 60%;
+	margin: auto;
+}
+
+#PokeName{
+	text-align: center;
+}
+
+#PokeDescription{
+	text-align: justify;
+}
+
+
+
+input[type=checkbox] {
+  align-self: center;
+}
 
 img{
 	display: flex;
