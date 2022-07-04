@@ -13,13 +13,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: compile CSS and Javascript
+      - name: Compile CSS and Javascript
         run:
           npm install
           npm run prod
 
-      - name: configure PHP 8.0
+      - name: Configure PHP 8.0
         uses: shivammathur/setup-php@master
         with:
           php-version: 8.0
           extension: json
+
+      - name: install composer dependencies
+        run: composer install --no-dev --no-interaction --prefer-dist 
+
+      - name: Create deplyoment artifact
+        run: tar -czf app.tar.gz
