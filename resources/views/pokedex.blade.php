@@ -43,6 +43,7 @@
 	        </div>
 	        <div id="PokeAbilities">
 	        </div>
+			
         </div>
       </div>
     </div>
