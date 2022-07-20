@@ -34,20 +34,6 @@ return [
     'lifetime' => env('SESSION_LIFETIME', 120),
 
     'expire_on_close' => false,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Session Encryption
-    |--------------------------------------------------------------------------
-    |
-    | This option allows you to easily specify that all of your session data
-    | should be encrypted before it is stored. All encryption will be run
-    | automatically by Laravel and you can use the Session like normal.
-    |
-    */
-
-    'encrypt' => false,
-
     /*
     |--------------------------------------------------------------------------
     | Session File Location
@@ -60,32 +46,6 @@ return [
     */
 
     'files' => storage_path('framework/sessions'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Session Database Connection
-    |--------------------------------------------------------------------------
-    |
-    | When using the "database" or "redis" session drivers, you may specify a
-    | connection that should be used to manage these sessions. This should
-    | correspond to a connection in your database configuration options.
-    |
-    */
-
-    'connection' => env('SESSION_CONNECTION', null),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Session Database Table
-    |--------------------------------------------------------------------------
-    |
-    | When using the "database" session driver, you may specify the table we
-    | should use to manage the sessions. Of course, a sensible default is
-    | provided for you; however, you are free to change this as needed.
-    |
-    */
-
-    'table' => 'sessions',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,33 +129,5 @@ return [
     */
 
     'secure' => env('SESSION_SECURE_COOKIE'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | HTTP Access Only
-    |--------------------------------------------------------------------------
-    |
-    | Setting this value to true will prevent JavaScript from accessing the
-    | value of the cookie and the cookie will only be accessible through
-    | the HTTP protocol. You are free to modify this option if needed.
-    |
-    */
-
-    'http_only' => true,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Same-Site Cookies
-    |--------------------------------------------------------------------------
-    |
-    | This option determines how your cookies behave when cross-site requests
-    | take place, and can be used to mitigate CSRF attacks. By default, we
-    | will set this value to "lax" since this is a secure default value.
-    |
-    | Supported: "lax", "strict", "none", null
-    |
-    */
-
-    'same_site' => 'lax',
 
 ];
