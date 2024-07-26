@@ -108,7 +108,7 @@ function imageName(ima){
 function ShowPokeModal(idPokemon, pokemonName){
 	document.getElementById("PokeImage").innerHTML = imageName(idPokemon);
 	document.getElementById("PokeName").innerHTML = pokemonName.toUpperCase();
-	fetch('/pokedex/' + idPokemon).then(function(response) {
+	fetch('pokedex/' + idPokemon).then(function(response) {
   		return response.json();
 	}).then(function(data) {
 		document.getElementById("PokeDescription").innerHTML = data.descriptionPokemon;
